@@ -11,21 +11,47 @@ import {
 const HomeScreen = (props) => {
   //console.log(props);
   return (
-    <View>
+    <View style={{ alignItems: "center" }}>
       <Image source={require("./../../assets/iut.png")} />
       <Text style={styles.textStyle}>Department of CSE</Text>
       <Text style={styles.textStyle}>Programme SWE</Text>
-      <Button title="My Profile" />
-      <Button title="Semester Wise Course List" />
-      <Button title="List of Faculty Members" />
+      <TouchableOpacity
+        onPress={function () {
+          props.navigation.navigate("Profile");
+          console.log("My Profile button clicked");
+        }}
+        style={styles.appButtonContainer}
+      >
+        <Text>My Profile</Text>
+      </TouchableOpacity>
+      <Button
+        title="Semester Wise Course List"
+        onPress={function () {
+          props.navigation.navigate("Semesters");
+        }}
+      />
+      <Button
+        title="List of Faculty Members"
+        onPress={function () {
+          props.navigation.navigate("Faculty List");
+        }}
+      />
     </View>
   );
 };
 
 const styles = StyleSheet.create({
   textStyle: {
-    fontSize: 30,
+    fontSize: 20,
     color: "blue",
+    padding: 10,
+  },
+  appButtonContainer: {
+    elevation: 20,
+    backgroundColor: (122, 122, 50),
+    borderRadius: 30,
+    paddingVertical: 10,
+    paddingHorizontal: 30,
   },
 });
 
